@@ -29,10 +29,8 @@ sudo apt-get install -y \
   python-dbus \
   autojump \
   meld \
-  vlc browser-plugin-vlc \
   git \
   git-core \
-  playonlinux \
   xclip
 
 ok "System updated!"
