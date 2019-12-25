@@ -57,9 +57,8 @@ ok "Heroku Toolbelt"
 # python
 if has_not python3; then
   sudo apt-get -y install python3
-  PY_VERSION=$(which python3)
 fi
-ok $PY_VERSION
+ok 'Python3 installed'
 
 if has_not pip; then
   sudo apt-get -y install build-essential \
