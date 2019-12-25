@@ -4,7 +4,8 @@
 ##
 ## Bash install script for students learning how to codeusing Ubuntu 16.04/,Ubuntu 18.04, Ubuntu 19.04
 ## 
-## - AUTHOR:  Moses <mussaimo> Okemwa
+## - AUTHORS:  Moses <mussaimo> Okemwa
+##             Raphael Katana <RKatana>
 ## - VERSION: 1.0
 ##
 
@@ -43,12 +44,26 @@ ok "Curl"
 ok "Git"
 ok "xclip"
 
-if has_not atom; then
-  sudo add-apt-repository ppa:webupd8team/atom
+# if has_not atom; then
+#   sudo add-apt-repository ppa:webupd8team/atom
+#   sudo apt update
+#   sudo apt install atom
+# fi
+# ok "Atom installed"
+
+if has_not code; then
+  # install the dependencies and wget
+  sudo apt-get install -y software-properties-common apt-transport-https wget 
+  # import the Microsoft GPG key using the following wget command:
+  wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | sudo apt-key add -
+  # enable vscode repo 
+  sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main"
+  # finally update and install vscode
   sudo apt update
-  sudo apt install atom
+  sudo apt install code
 fi
-ok "Atom installed"
+ok 'Visual Studio code installed, use code to open it up'
+
 
 if has_not sublime; then
   sudo add-apt-repository ppa:webupd8team/sublime-text-3
@@ -89,7 +104,7 @@ if ! [[ -d "$HOME/.oh-my-zsh" ]]; then
 fi
 ok "OH My ZSH"
 
-if has_not vlc; then #Check if the Vlc is not installedthen install using snap
+if has_not vlc; then #Check if vlc is not installedt hen install using snap
   sudo snap install -y vlc
 fi
 ok 'vlc'
