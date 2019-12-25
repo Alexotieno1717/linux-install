@@ -4,7 +4,8 @@
 ##
 ## Bash install script for students learning how to codeusing Ubuntu 16.04
 ## 
-## - AUTHOR:  Moses <mussaimo> Okemwa
+## - AUTHORS:  Moses <mussaimo> Okemwa
+##             Raphael Katana <RKatana>
 ## - VERSION: 1.0
 ##
 
@@ -54,10 +55,11 @@ fi
 ok "Heroku Toolbelt"
 
 # python
-if has_not python3.6; then
-  sudo apt-get -y install python3.6
+if has_not python3; then
+  sudo apt-get -y install python3
+  PY_VERSION=$(which python3)
 fi
-ok "Python3.6"
+ok $PY_VERSION
 
 if has_not pip; then
   sudo apt-get -y install build-essential \
@@ -73,8 +75,6 @@ if has_not pip; then
 fi
 ok "pip"
 
-# django for python 23
-sudo apt-get -y install python3-django
 
 # Clean up
 sudo apt-get autoclean -y
