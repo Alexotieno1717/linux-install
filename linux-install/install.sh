@@ -46,13 +46,12 @@ ok "Vim"
 ok "KeePassX"
 ok "Autojump"
 ok "Meld"
-ok "VLC"
 ok "Git"
 ok "PlayOnLinux"
 ok "xclip"
 
 if has_not pip; then
-  sudo apt-get install python-pip python-dev build-essential
+  sudo apt-get install python3-pip python-dev build-essential
   sudo pip install --upgrade pip
   sudo pip install --upgrade virtualenv
 fi
@@ -200,6 +199,19 @@ if ! [[ -d "$HOME/.oh-my-zsh" ]]; then
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 fi
 ok "OH My ZSH"
+
+if has_not code; then
+  # install the dependencies and wget
+  sudo apt-get install -y software-properties-common apt-transport-https wget 
+  # import the Microsoft GPG key using the following wget command:
+  wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | sudo apt-key add -
+  # enable vscode repo 
+  sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main"
+  # finally update and install vscode
+  sudo apt update
+  sudo apt install code
+fi
+ok 'Visual Studio code installed, use code to open it up'
 
 if has_not heroku; then
   wget -O- https://toolbelt.heroku.com/install-ubuntu.sh | sh
