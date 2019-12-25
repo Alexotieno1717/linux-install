@@ -2,7 +2,7 @@
 
 
 ##
-## Bash install script for students learning how to codeusing Ubuntu 16.04
+## Bash install script for students learning how to codeusing Ubuntu 16.04/,Ubuntu 18.04, Ubuntu 19.04
 ## 
 ## - AUTHOR:  Moses <mussaimo> Okemwa
 ## - VERSION: 1.0
@@ -29,10 +29,10 @@ sudo apt-get install -y \
   openssh-server \
   zsh \
   curl \
-  vlc browser-plugin-vlc \
   git git-core \
   xclip\
   software-properties-common
+
 
 
 ok "System updated!"
@@ -40,7 +40,6 @@ ok "HTop"
 ok "OpenSSH Server"
 ok "ZSH"
 ok "Curl"
-ok "VLC"
 ok "Git"
 ok "xclip"
 
@@ -90,6 +89,10 @@ if ! [[ -d "$HOME/.oh-my-zsh" ]]; then
 fi
 ok "OH My ZSH"
 
+if has_not vlc; then #Check if the Vlc is not installedthen install using snap
+  sudo snap install -y vlc
+fi
+ok 'vlc'
 # installing wakatime
 sudo pip install wakatime
 ok "Wakatime CLI (https://github.com/wbinglee/zsh-wakatime)"
