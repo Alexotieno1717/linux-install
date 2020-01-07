@@ -1,4 +1,5 @@
 #!/bin/bash
+
 set -eox pipefail
 
 has() {
@@ -39,7 +40,7 @@ fi
 ok "Chrome"
 
 if has_not vlc; then #Check if vlc is not installedt hen install using snap
-  sudo snap install -y vlc
+  sudo snap install vlc
 fi
 ok 'vlc'
 if has not slack; then 
