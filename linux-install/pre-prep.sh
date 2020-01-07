@@ -61,8 +61,6 @@ sudo apt-get autoremove -y
 
 ok 'Installation complete'
 
-# Restarting machine
-sudo shutdown -r 0
 
 
 
