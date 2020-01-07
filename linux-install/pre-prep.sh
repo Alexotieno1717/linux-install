@@ -43,7 +43,10 @@ if has_not vlc; then #Check if vlc is not installedt hen install using snap
   sudo snap install -y vlc
 fi
 ok 'vlc'
-
+if has not slack; then 
+    sudo snap install slack --classic
+fi
+ok 'Slack'
 if has_not prey; then #Installing prey
     wget https://downloads.preyproject.com/prey-client-releases/node-client/1.6.6/prey_1.9.2_amd64.deb
     sudo apt-get install giblib1 libimlib2 mpg123 scrot streamer xawtv-plugins
